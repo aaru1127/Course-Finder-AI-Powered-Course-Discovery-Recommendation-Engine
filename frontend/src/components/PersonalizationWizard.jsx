@@ -44,24 +44,24 @@ export default function PersonalizationWizard({ onSelectCourse, onFindSimilar })
   return (
     <div className="space-y-8 animate-in fade-in">
       {/* Wizard Header */}
-      <div className="glass-panel rounded-3xl p-6 sm:p-8 space-y-6">
+      <div className="glass-panel rounded-3xl p-6 sm:p-8 space-y-6 shadow-sm">
         <div className="flex items-center space-x-3">
-          <div className="p-3 rounded-2xl bg-gradient-to-tr from-blue-600 to-indigo-600 text-white shadow-lg shadow-blue-500/20">
+          <div className="p-3 rounded-2xl bg-gradient-to-tr from-blue-600 to-indigo-600 text-white shadow-md shadow-blue-500/20">
             <Sparkles className="w-6 h-6 text-amber-300" />
           </div>
           <div>
-            <h2 className="text-xl sm:text-2xl font-bold text-white">Personalized Learning Roadmap</h2>
-            <p className="text-sm text-slate-400">
+            <h2 className="text-xl sm:text-2xl font-bold text-slate-900">Personalized Learning Roadmap</h2>
+            <p className="text-sm text-slate-600">
               Tell us your current background, target technologies, and available study hours.
             </p>
           </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 pt-4 border-t border-slate-800">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 pt-4 border-t border-slate-200">
           {/* Skill Level */}
           <div className="space-y-2">
-            <label className="flex items-center space-x-2 text-xs font-semibold uppercase tracking-wider text-slate-300">
-              <Award className="w-4 h-4 text-blue-400" />
+            <label className="flex items-center space-x-2 text-xs font-semibold uppercase tracking-wider text-slate-700">
+              <Award className="w-4 h-4 text-blue-600" />
               <span>Current Experience Level</span>
             </label>
             <div className="grid grid-cols-3 gap-2">
@@ -71,8 +71,8 @@ export default function PersonalizationWizard({ onSelectCourse, onFindSimilar })
                   onClick={() => setSkillLevel(lvl)}
                   className={`py-2 px-3 rounded-xl text-xs font-bold transition-all border ${
                     skillLevel === lvl
-                      ? 'bg-blue-600 text-white border-blue-500 shadow-md shadow-blue-600/30'
-                      : 'bg-slate-800/80 text-slate-400 border-slate-700 hover:bg-slate-800'
+                      ? 'bg-blue-600 text-white border-blue-500 shadow-sm'
+                      : 'bg-slate-100 text-slate-600 border-slate-200 hover:bg-slate-200'
                   }`}
                 >
                   {lvl}
@@ -83,12 +83,12 @@ export default function PersonalizationWizard({ onSelectCourse, onFindSimilar })
 
           {/* Weekly Available Study Hours */}
           <div className="space-y-2">
-            <div className="flex justify-between text-xs font-semibold uppercase tracking-wider text-slate-300">
+            <div className="flex justify-between text-xs font-semibold uppercase tracking-wider text-slate-700">
               <span className="flex items-center space-x-2">
-                <Clock className="w-4 h-4 text-amber-400" />
+                <Clock className="w-4 h-4 text-amber-500" />
                 <span>Weekly Available Time</span>
               </span>
-              <span className="font-mono text-blue-400 font-bold">{weeklyHours} Hours / Week</span>
+              <span className="font-mono text-blue-600 font-bold">{weeklyHours} Hours / Week</span>
             </div>
             <input
               type="range"
@@ -97,9 +97,9 @@ export default function PersonalizationWizard({ onSelectCourse, onFindSimilar })
               step="1"
               value={weeklyHours}
               onChange={(e) => setWeeklyHours(Number(e.target.value))}
-              className="w-full h-2 bg-slate-700 rounded-lg appearance-none cursor-pointer accent-blue-500 mt-2"
+              className="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-blue-600 mt-2"
             />
-            <div className="flex justify-between text-[10px] text-slate-500 font-mono">
+            <div className="flex justify-between text-[10px] text-slate-400 font-mono">
               <span>3h (Casual)</span>
               <span>10h (Balanced)</span>
               <span>20h+ (Bootcamp)</span>
@@ -108,8 +108,8 @@ export default function PersonalizationWizard({ onSelectCourse, onFindSimilar })
 
           {/* Target Technologies */}
           <div className="space-y-2 md:col-span-2">
-            <label className="flex items-center space-x-2 text-xs font-semibold uppercase tracking-wider text-slate-300">
-              <Cpu className="w-4 h-4 text-indigo-400" />
+            <label className="flex items-center space-x-2 text-xs font-semibold uppercase tracking-wider text-slate-700">
+              <Cpu className="w-4 h-4 text-indigo-600" />
               <span>Target Technologies & Topics</span>
             </label>
             <div className="flex flex-wrap gap-2">
@@ -121,8 +121,8 @@ export default function PersonalizationWizard({ onSelectCourse, onFindSimilar })
                     onClick={() => toggleTech(tech)}
                     className={`px-3 py-1.5 rounded-xl text-xs font-medium transition-all border ${
                       isSelected
-                        ? 'bg-blue-600/30 text-blue-300 border-blue-500 shadow-sm'
-                        : 'bg-slate-800/80 text-slate-400 border-slate-700 hover:bg-slate-800'
+                        ? 'bg-blue-50 text-blue-700 border-blue-300 font-semibold shadow-xs'
+                        : 'bg-slate-100 text-slate-600 border-slate-200 hover:bg-slate-200'
                     }`}
                   >
                     {tech}
@@ -134,8 +134,8 @@ export default function PersonalizationWizard({ onSelectCourse, onFindSimilar })
 
           {/* Goal Statement */}
           <div className="space-y-2 md:col-span-2">
-            <label className="flex items-center space-x-2 text-xs font-semibold uppercase tracking-wider text-slate-300">
-              <Target className="w-4 h-4 text-emerald-400" />
+            <label className="flex items-center space-x-2 text-xs font-semibold uppercase tracking-wider text-slate-700">
+              <Target className="w-4 h-4 text-emerald-600" />
               <span>Learning Objective / Career Target</span>
             </label>
             <input
@@ -143,7 +143,7 @@ export default function PersonalizationWizard({ onSelectCourse, onFindSimilar })
               value={goal}
               onChange={(e) => setGoal(e.target.value)}
               placeholder="e.g. Master backend engineering and build scalable production APIs"
-              className="w-full px-4 py-3 rounded-xl bg-slate-800 border border-slate-700 text-sm text-slate-100 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full px-4 py-3 rounded-xl bg-white border border-slate-300 text-sm text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500 shadow-xs"
             />
           </div>
         </div>
@@ -153,7 +153,7 @@ export default function PersonalizationWizard({ onSelectCourse, onFindSimilar })
           <button
             onClick={handleGenerate}
             disabled={loading}
-            className="w-full py-3.5 px-6 rounded-2xl bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white font-bold text-sm flex items-center justify-center space-x-2 shadow-xl shadow-blue-600/30 disabled:opacity-50 transition-all"
+            className="w-full py-3.5 px-6 rounded-2xl bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white font-bold text-sm flex items-center justify-center space-x-2 shadow-md shadow-blue-600/20 disabled:opacity-50 transition-all"
           >
             {loading ? (
               <span>Generating Targeted Roadmap...</span>
@@ -172,11 +172,11 @@ export default function PersonalizationWizard({ onSelectCourse, onFindSimilar })
       {recommendations.length > 0 && (
         <div className="space-y-4">
           <div className="flex items-center justify-between">
-            <h3 className="text-lg font-bold text-white flex items-center space-x-2">
-              <CheckCircle2 className="w-5 h-5 text-emerald-400" />
+            <h3 className="text-lg font-bold text-slate-900 flex items-center space-x-2">
+              <CheckCircle2 className="w-5 h-5 text-emerald-600" />
               <span>Recommended Courses For Your Profile</span>
             </h3>
-            <span className="text-xs font-mono text-slate-400">
+            <span className="text-xs font-mono text-slate-500">
               {recommendations.length} Aligned Courses
             </span>
           </div>
@@ -185,8 +185,8 @@ export default function PersonalizationWizard({ onSelectCourse, onFindSimilar })
             {recommendations.map((course) => (
               <div key={course.id} className="flex flex-col">
                 {course.recommendation_reason && (
-                  <div className="mb-2 px-3 py-1.5 rounded-lg bg-blue-900/30 border border-blue-800 text-blue-300 text-xs flex items-center space-x-1.5">
-                    <Sparkles className="w-3.5 h-3.5 text-amber-400 flex-shrink-0" />
+                  <div className="mb-2 px-3 py-1.5 rounded-lg bg-blue-50 border border-blue-200 text-blue-700 text-xs flex items-center space-x-1.5 font-medium">
+                    <Sparkles className="w-3.5 h-3.5 text-amber-500 flex-shrink-0" />
                     <span className="line-clamp-1">{course.recommendation_reason}</span>
                   </div>
                 )}
