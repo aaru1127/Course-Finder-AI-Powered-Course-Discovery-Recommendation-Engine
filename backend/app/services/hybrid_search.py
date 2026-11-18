@@ -77,7 +77,8 @@ class HybridSearchService:
                 max_duration=max_duration,
                 min_duration=min_duration,
                 provider=provider,
-                free_only=free_only
+                free_only=free_only,
+                min_similarity=0.28
             )
 
         # Mode: Hybrid Search with RRF Fusion
@@ -95,7 +96,7 @@ class HybridSearchService:
             free_only=free_only
         )
 
-        # 2. Semantic retrieval
+        # 2. Semantic retrieval (enforce noise cutoff)
         vector_results = self.vector_service.search(
             query=query,
             query_embedding=query_embedding,
@@ -105,8 +106,19 @@ class HybridSearchService:
             max_duration=max_duration,
             min_duration=min_duration,
             provider=provider,
-            free_only=free_only
+            free_only=free_only,
+            min_similarity=0.25
         )
+
+        # Rejection of out-of-domain / irrelevant queries:
+        # If both retrievals return nothing, return empty
+        if not bm25_results and not vector_results:
+            return []
+
+        # If BM25 has zero matches and top vector similarity is weak (< 0.28),
+        # this query has no relevant courses in our database (e.g. 'maid', 'banana')
+        if not bm25_results and (not vector_results or vector_results[0].get("score", 0) < 0.28):
+            return []
 
         # 3. Fuse with Reciprocal Rank Fusion (RRF)
         # Store metadata and calculate accumulated RRF scores
@@ -145,12 +157,22 @@ class HybridSearchService:
         for cid in sorted_cids[:top_k]:
             base_course = course_data[cid]
             raw_rrf = rrf_scores[cid]
-            
-            # Calibrated relevance score (percentage between 0.0 and 1.0)
-            # High agreement (in both #1 ranks) yields 95-98%
-            # Moderate agreement yields 80-92%
-            # Single source lower rank scales down accurately
-            calibrated_score = round(min(0.98, max(0.50, (raw_rrf / max_possible_rrf) * 0.95 + 0.05)), 3)
+            ratio = raw_rrf / max_possible_rrf
+
+            in_bm25 = cid in bm25_ranks
+            in_vector = cid in vector_ranks
+
+            # Calibrated relevance score based on consensus and actual similarity:
+            if in_bm25 and in_vector:
+                # Strong dual-source agreement (both lexical & semantic confirm match)
+                calibrated_score = round(min(0.98, max(0.65, 0.65 + ratio * 0.33)), 3)
+            elif in_vector:
+                # Semantic vector only - scale by true cosine similarity
+                vec_sim = base_course.get("score", 0.5)
+                calibrated_score = round(min(0.88, max(0.30, vec_sim)), 3)
+            else:
+                # BM25 only - scale by rank position
+                calibrated_score = round(min(0.85, max(0.35, ratio * 1.5)), 3)
 
             sources = []
             if cid in bm25_ranks:

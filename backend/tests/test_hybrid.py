@@ -48,3 +48,19 @@ def test_hybrid_rrf_fusion():
     assert 0.0 <= results[0]["score"] <= 1.0
     assert len(results[0]["retrieval_sources"]) >= 1
 
+def test_irrelevant_query_rejection():
+    bm25 = BM25Index()
+    bm25.index_courses(SAMPLE_COURSES)
+
+    vector = VectorSearchService()
+    vector.index_courses(SAMPLE_COURSES)
+
+    hybrid = HybridSearchService(bm25_index=bm25, vector_service=vector, rrf_k=60)
+    # Queries completely outside the technical curriculum should return 0 results
+    results_maid = hybrid.search(query="maid", top_k=5, mode="hybrid")
+    assert len(results_maid) == 0
+
+    results_random = hybrid.search(query="cooking banana smoothie", top_k=5, mode="hybrid")
+    assert len(results_random) == 0
+
+

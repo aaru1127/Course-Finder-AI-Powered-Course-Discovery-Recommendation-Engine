@@ -94,11 +94,12 @@ class VectorSearchService:
         min_duration: Optional[float] = None,
         provider: Optional[str] = None,
         free_only: bool = False,
-        exclude_id: Optional[str] = None
+        exclude_id: Optional[str] = None,
+        min_similarity: float = 0.25
     ) -> List[Dict[str, Any]]:
         """
         Semantic vector search via cosine similarity (dot product of L2 normalized vectors).
-        Applies metadata filters and returns ranked results.
+        Applies metadata filters, enforces minimum similarity threshold, and returns ranked results.
         """
         if query_embedding is None:
             if not query:
@@ -117,6 +118,11 @@ class VectorSearchService:
 
         results = []
         for idx in sorted_indices:
+            sim_score = float(similarities[idx])
+            # If similarity drops below the noise threshold, break immediately (indices are descending)
+            if sim_score < min_similarity:
+                break
+
             course_id = self.course_ids[idx]
             if exclude_id and course_id == exclude_id:
                 continue
@@ -137,7 +143,6 @@ class VectorSearchService:
             if free_only and course.get("price", 0.0) > 0.0:
                 continue
 
-            sim_score = float(similarities[idx])
             # Bound between 0.0 and 1.0
             sim_score = max(0.0, min(1.0, sim_score))
 
