@@ -1,0 +1,23 @@
+# Python
+venv/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.pytest_cache/
+
+# Node
+node_modules/
+frontend/dist/
+frontend/.vite/
+
+# Database & local caches
+*.db
+backend/data/*.db
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Environment
+.env
