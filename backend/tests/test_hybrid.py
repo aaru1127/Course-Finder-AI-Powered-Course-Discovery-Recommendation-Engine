@@ -47,3 +47,4 @@ def test_hybrid_rrf_fusion():
     assert "score" in results[0]
     assert 0.0 <= results[0]["score"] <= 1.0
     assert len(results[0]["retrieval_sources"]) >= 1
+

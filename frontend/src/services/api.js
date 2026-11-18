@@ -50,3 +50,4 @@ export const clearCache = async () => {
   const response = await apiClient.post('/cache/clear');
   return response.data;
 };
+

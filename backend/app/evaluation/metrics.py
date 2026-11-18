@@ -59,3 +59,4 @@ def reciprocal_rank(retrieved_ids: List[str], relevant_ids: Set[str]) -> float:
         if cid in relevant_ids:
             return round(1.0 / rank, 4)
     return 0.0
+

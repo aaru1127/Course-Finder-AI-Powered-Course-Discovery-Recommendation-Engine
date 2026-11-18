@@ -31,3 +31,4 @@ def test_cache_invalidation():
 
     cache.clear()
     assert cache.get_search_results(payload) is None
+

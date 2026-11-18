@@ -174,3 +174,4 @@ class BM25Index:
                 break
 
         return ranked_results
+

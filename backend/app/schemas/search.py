@@ -39,3 +39,4 @@ class PersonalizationRequest(BaseModel):
     available_weekly_hours: Optional[float] = Field(10.0, description="Weekly hours available")
     preferred_categories: List[str] = Field(default_factory=list)
     top_k: int = Field(default=8, ge=1, le=20)
+

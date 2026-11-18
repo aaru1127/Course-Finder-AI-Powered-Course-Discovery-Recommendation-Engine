@@ -203,3 +203,4 @@ export default function PersonalizationWizard({ onSelectCourse, onFindSimilar })
     </div>
   );
 }
+

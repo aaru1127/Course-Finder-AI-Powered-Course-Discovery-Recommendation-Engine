@@ -25,3 +25,4 @@ class CourseResponse(CourseBase):
     score: Optional[float] = Field(None, description="Search relevance score (0.0 to 1.0 or normalized %)")
     matched_skills: Optional[List[str]] = Field(default_factory=list, description="Skills matching search query")
     retrieval_sources: Optional[List[str]] = Field(default_factory=list, description="BM25, Semantic, or Both")
+

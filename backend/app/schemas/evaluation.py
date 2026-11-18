@@ -18,3 +18,4 @@ class BenchmarkSummary(BaseModel):
     strategies: Dict[str, BenchmarkStrategyResult]
     redis_cache_benchmark: Dict[str, Any]
     timestamp: str
+

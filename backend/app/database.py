@@ -87,3 +87,4 @@ def seed_database_if_empty():
         db.rollback()
     finally:
         db.close()
+

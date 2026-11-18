@@ -43,3 +43,4 @@ def test_vector_search_service():
     assert len(results) > 0
     assert results[0]["id"] == "c1"
     assert 0.0 <= results[0]["score"] <= 1.0
+

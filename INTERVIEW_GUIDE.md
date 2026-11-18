@@ -159,3 +159,4 @@ The Cache-Aside (Lazy Loading) pattern operates as follows:
 | **Caching Layer** | Redis Two-Tier Cache-Aside | 20.1x latency reduction for repeated searches and embedding reuse. |
 | **API Framework** | FastAPI (ASGI + Python 3.11/3.13) | Asynchronous request processing, native Pydantic validation, OpenAPI. |
 | **Evaluation** | Automated Benchmark (25 queries) | Quantitatively proves that Hybrid Search achieves superior NDCG and Recall. |
+

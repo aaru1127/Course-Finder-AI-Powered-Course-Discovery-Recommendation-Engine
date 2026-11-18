@@ -7158,5 +7158,83 @@
     "price": 69.99,
     "rating": 5.0,
     "course_url": "https://example.com/courses/course_358"
+  },
+  {
+    "id": "course_359",
+    "title": "Python Machine Learning Crash Course (Free)",
+    "provider": "freeCodeCamp",
+    "description": "Free beginner crash course in Python-based machine learning. Covers scikit-learn, linear regression, decision trees, k-nearest neighbors, and model evaluation in under 8 hours.",
+    "skills": [
+      "Python",
+      "Machine Learning",
+      "Scikit-Learn",
+      "NumPy"
+    ],
+    "category": "AI & Machine Learning",
+    "difficulty": "Beginner",
+    "duration_hours": 8.0,
+    "language": "English",
+    "price": 0.0,
+    "rating": 4.7,
+    "course_url": "https://example.com/courses/python-ml-crash-course-free"
+  },
+  {
+    "id": "course_360",
+    "title": "Introduction to AI and Machine Learning with Python",
+    "provider": "Google",
+    "description": "Free beginner-friendly introduction to artificial intelligence and machine learning. Learn core ML concepts, Python scikit-learn, pandas data processing, and build your first classifier in 7 hours.",
+    "skills": [
+      "Python",
+      "Machine Learning",
+      "Scikit-Learn",
+      "pandas",
+      "AI"
+    ],
+    "category": "AI & Machine Learning",
+    "difficulty": "Beginner",
+    "duration_hours": 7.0,
+    "language": "English",
+    "price": 0.0,
+    "rating": 4.8,
+    "course_url": "https://example.com/courses/intro-ai-ml-python-free"
+  },
+  {
+    "id": "course_361",
+    "title": "Machine Learning Foundations: Algorithms & Python",
+    "provider": "freeCodeCamp",
+    "description": "No-cost beginner introduction to machine learning algorithms. Understand supervised and unsupervised learning, train models with scikit-learn, evaluate performance with cross-validation, in under 10 hours.",
+    "skills": [
+      "Machine Learning",
+      "Python",
+      "Algorithms",
+      "Scikit-Learn"
+    ],
+    "category": "AI & Machine Learning",
+    "difficulty": "Beginner",
+    "duration_hours": 9.0,
+    "language": "English",
+    "price": 0.0,
+    "rating": 4.6,
+    "course_url": "https://example.com/courses/ml-foundations-free"
+  },
+  {
+    "id": "course_362",
+    "title": "Free Node.js Essentials in 6 Hours",
+    "provider": "freeCodeCamp",
+    "description": "Free 6-hour beginner Node.js bootcamp. Learn Express routing, middleware, REST API design, connecting to MongoDB, and deploying your first backend application.",
+    "skills": [
+      "Node.js",
+      "Express",
+      "REST APIs",
+      "MongoDB",
+      "JavaScript"
+    ],
+    "category": "Backend Development",
+    "difficulty": "Beginner",
+    "duration_hours": 6.0,
+    "language": "English",
+    "price": 0.0,
+    "rating": 4.7,
+    "course_url": "https://example.com/courses/nodejs-essentials-free-6h"
   }
 ]

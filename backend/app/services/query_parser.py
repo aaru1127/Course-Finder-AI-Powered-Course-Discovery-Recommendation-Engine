@@ -76,3 +76,4 @@ class QueryIntentParser:
                 break
 
         return extracted
+

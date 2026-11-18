@@ -317,3 +317,4 @@ def clear_cache():
         count = cache_service.clear()
         return {"status": "success", "cleared_entries": count}
     return {"status": "noop"}
+

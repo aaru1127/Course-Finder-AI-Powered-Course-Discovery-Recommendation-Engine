@@ -130,3 +130,4 @@ class SearchEvaluator:
             "redis_cache_benchmark": cache_benchmark,
             "timestamp": datetime.datetime.now(datetime.timezone.utc).isoformat()
         }
+

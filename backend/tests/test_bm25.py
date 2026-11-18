@@ -71,3 +71,4 @@ def test_bm25_filtering():
     res_dur = index.search("JavaScript", max_duration=15.0)
     assert len(res_dur) == 1
     assert res_dur[0]["id"] == "c1"
+

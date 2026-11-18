@@ -82,7 +82,7 @@ class CacheService:
         # Write to Redis
         if self.is_redis_available:
             try:
-                self.redis_client.setex(key, ttl, json.dumps(data, default=str))
+                self.redis_client.set(key, json.dumps(data, default=str), ex=ttl)
             except Exception as e:
                 logger.error(f"Redis set error: {e}")
 
@@ -121,7 +121,7 @@ class CacheService:
 
         if self.is_redis_available:
             try:
-                self.redis_client.setex(key, ttl, json.dumps(data))
+                self.redis_client.set(key, json.dumps(data), ex=ttl)
             except Exception as e:
                 logger.error(f"Redis emb set error: {e}")
 
@@ -144,3 +144,4 @@ class CacheService:
                 logger.error(f"Redis clear error: {e}")
 
         return cleared_count
+

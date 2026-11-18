@@ -166,3 +166,4 @@ def find_relevant_course_ids(query_spec: Dict[str, Any], all_courses: List[Dict[
             relevant.add(c["id"])
 
     return relevant
+

@@ -41,3 +41,4 @@ class CourseModel(Base):
             "rating": self.rating,
             "course_url": self.course_url,
         }
+

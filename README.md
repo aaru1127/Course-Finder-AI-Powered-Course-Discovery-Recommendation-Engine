@@ -249,3 +249,4 @@ course_finder/
 ├── INTERVIEW_GUIDE.md               # Technical interview preparation guide
 └── README.md
 ```
+

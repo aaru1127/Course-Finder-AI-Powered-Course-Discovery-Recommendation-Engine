@@ -168,3 +168,4 @@ class HybridSearchService:
             })
 
         return final_results
+

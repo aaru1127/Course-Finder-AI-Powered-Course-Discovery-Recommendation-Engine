@@ -137,3 +137,4 @@ export default function CourseCard({ course, onSelectCourse, onFindSimilar }) {
     </div>
   );
 }
+

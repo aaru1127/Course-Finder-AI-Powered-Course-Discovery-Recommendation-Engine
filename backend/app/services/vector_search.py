@@ -160,3 +160,4 @@ class VectorSearchService:
             return None
         idx = self.course_ids.index(course_id)
         return self.embeddings[idx]
+

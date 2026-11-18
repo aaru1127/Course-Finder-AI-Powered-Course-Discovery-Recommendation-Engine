@@ -71,3 +71,4 @@ def test_recommendation_endpoint(client):
     recs = res.json()
     assert len(recs) > 0
     assert "recommendation_reason" in recs[0]
+
